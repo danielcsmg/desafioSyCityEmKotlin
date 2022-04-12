@@ -32,8 +32,8 @@ fun main() {
 
 }
 
-fun obterSalarios(vetorSize: Int): DoubleArray{
-    val vetorSalario = DoubleArray(vetorSize)
+fun obterSalarios(vetorSize: Int): Array<Double>{
+    val vetorSalario = Array(vetorSize){i -> i.toDouble()}
     for(i in vetorSalario.indices){
         println("Digite o valor do salário referente ao mês ${i + 1}:")
         vetorSalario[i] = readln().toDouble()
@@ -41,7 +41,7 @@ fun obterSalarios(vetorSize: Int): DoubleArray{
     return vetorSalario
 }
 
-fun calcImpostos(salarioObtido: DoubleArray): Array<String>{
+fun calcImpostos(salarioObtido: Array<Double>): Array<String>{
     val impostos = Array(salarioObtido.size){
         i -> when{
             salarioObtido[i] <= 2000 -> "R$  0.00"
@@ -57,13 +57,13 @@ fun calcImpostos(salarioObtido: DoubleArray): Array<String>{
     return impostos
 }
 
-fun mostrarImpostos(vetorImposto: Array<String>){
+fun mostrarImpostos(vetorImposto: Array<*>){
     println("\n\n------Impostos------\n")
     for (item in vetorImposto) println(item)
     println("\n")
 }
 
-fun formataSalario(salario: DoubleArray){
+fun formataSalario(salario: Array<Double>){
     println("\n\n------Salários------\n")
     for(item in salario) println("R$${("%.2f".format(item))
         .replace(",", ".")}")
