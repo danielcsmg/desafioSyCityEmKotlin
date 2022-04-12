@@ -7,7 +7,7 @@ fun main() {
     var nome: String? = null
     var profissao: String? = null
 
-    val salarios = obterSalarios(12)
+    val salarios = obterSalarios(2)
 
     val impostosCalculados = calcImpostos(salarios)
 
@@ -33,12 +33,13 @@ fun main() {
 }
 
 fun obterSalarios(vetorSize: Int): Array<Double>{
-    val vetorSalario = Array(vetorSize){i -> i.toDouble()}
-    for(i in vetorSalario.indices){
-        println("Digite o valor do salário referente ao mês ${i + 1}:")
-        vetorSalario[i] = readln().toDouble()
-    }
+    var vetorSalario = Array(vetorSize) { i -> obtemValor(i) }
     return vetorSalario
+}
+
+fun obtemValor(num: Int): Double {
+    println("Digite o valor do salário referente ao ${num + 1}º mês:")
+    return readln().toDouble()
 }
 
 fun calcImpostos(salarioObtido: Array<Double>): Array<String>{
